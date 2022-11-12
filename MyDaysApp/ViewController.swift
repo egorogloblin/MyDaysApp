@@ -9,11 +9,23 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var infoLabel: UILabel!
+//    @IBOutlet weak var resultButton: UIButton!
+    
+    private var numberDays = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // resultButton.layer.cornerRadius = 12
     }
 
-
+    @IBAction func resultButtonTapped() {
+        infoLabel.text = "Ты не бегал уже \(numberDays)"
+    }
+    
+    @IBAction func datePicked(_ sender: UIDatePicker) {
+        let range = sender.date..<Date.now
+        numberDays = range.formatted(.components(style: .wide, fields: [.day]))
+    }
 }
 
